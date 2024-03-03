@@ -1,0 +1,36 @@
+extends Node2D
+
+# LOOT 
+var FALL_SPEED = 75
+var FALL_SPEED_RESET = FALL_SPEED
+var LOOT_FADE_LENGTH = 0.4
+var LOOT_FADE_LENGTH_RESET = LOOT_FADE_LENGTH
+var FOOD_FADE_LENGTH = 0.2
+var FOOD_FADE_LENGTH_RESET = FOOD_FADE_LENGTH
+
+# BATTLE
+var BATTLE_TIMER_RESET = 90  # 90 
+var BATTLE_TIMER = BATTLE_TIMER_RESET  # 
+var WEAPON_POWER = 5
+var WEAPON_LEVEL = 1
+ 
+# FEEDING
+var FOOD_COST = -5
+var FOOD_LEVEL = 1
+var FOOD_COUNT = 1
+var BASE_FOOD_CALORIES = 4
+
+# COLLECTION
+var CLICK_COUNTER = 0  # number of sprites to click through
+var CLICK_RESET = 1  # each click resets to this value 
+
+# WINDOW
+var WINDOW_HEIGHT = 360
+var WINDOW_WIDTH = 640
+var BOTTOM_BOARDER = 20
+var SIDE_BOARDER = 10
+var TOP_BOARDER = 70
+
+# MENU
+var LEVEL_SELECTION = "1-1"  # for testing
+var PET_SELECTION = []

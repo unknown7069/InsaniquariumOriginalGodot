@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://new_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Tank.gd" type="Script" id=2]
+[ext_resource path="res://Node2D.gd" type="Script" id=3]
+[ext_resource path="res://backgrounds/bk_tank1.png" type="Texture" id=4]
+
+[node name="main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="food_container" type="Node2D" parent="."]
+
+[node name="loot_container" type="Node2D" parent="."]
+
+[node name="fish_container" type="Node2D" parent="."]
+
+[node name="dead_container" type="Node2D" parent="."]
+
+[node name="alien_container" type="Node2D" parent="."]
+
+[node name="pet_container" type="Node2D" parent="."]
+
+[node name="misc_container" type="Node2D" parent="."]
+
+[node name="battle_timer" type="Timer" parent="."]
+
+[node name="click_timer" type="Timer" parent="."]
+
+[node name="window_testing" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="gui_container" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bank" type="Button" parent="gui_container"]
+margin_left = 524.0
+margin_top = 19.0
+margin_right = 638.0
+margin_bottom = 37.0
+disabled = true
+text = "MONEY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="options" type="Button" parent="gui_container"]
+margin_left = 523.0
+margin_right = 640.0
+margin_bottom = 18.0
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 4 )
+centered = false

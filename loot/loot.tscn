@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://clickable_sprite.gd" type="Script" id=1]
+[ext_resource path="res://loot/loot.gd" type="Script" id=2]
+[ext_resource path="res://loot/images/shell_penny.png" type="Texture" id=3]
+
+[node name="loot" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="loot_penny" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+
+[node name="fade_timer" type="Timer" parent="."]
+
+[node name="freeze_timer" type="Timer" parent="."]

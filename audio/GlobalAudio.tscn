@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://audio/sounds/muffled_slide.wav" type="AudioStream" id=1]
+[ext_resource path="res://audio/sounds/collect_chime.wav" type="AudioStream" id=2]
+[ext_resource path="res://audio/sounds/whoosh.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/sounds/error.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/sounds/zap.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/sounds/crunch.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/sounds/slurp.wav" type="AudioStream" id=7]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="drop_food" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+
+[node name="collect_loot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+
+[node name="cannot_afford" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="purchase" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="zap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="crunch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="slurp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )

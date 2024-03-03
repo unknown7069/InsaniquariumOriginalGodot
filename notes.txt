@@ -1,0 +1,174 @@
+----- todo 
+high
+* first tank background 
+medium 
+* bonus power ups 
+* first set of pets 
+* store icons + icon script that resizes and crops 
+* store based on level 
+* options + pause game 
+* give aliens a max click rate 
+low 
+* animate loot 
+* shadows from things on the bottom of the tank 
+* animated background 
+* music + more sounds! 
+
+------ ideas 
+* story - save pets 
+* free play - survival, peaceful, 
+- unlock fish by completing level, maybe just random 
+* online? coop 
+* virtual tank -> my tank 
+- select X pets
+- select X fish, nothing gets hungry 
+- select background + features?
+* options 
+* records 
+
+------ loot
+shell (bronze/silver/gold) - 10, 30, 50
+star - 80
+spiral/spike (green/blue) - 150, 250
+conch (purple/red) - 500, 800
+pearl (white, pink) - 2000, 5000
+
+------ power ups
+* double points
+* max collect
+* free pet
+* super food drop
+* free upgrade
+* bonus points?
+* fire sale
+
+------ maps
+* regular slots (6): food upgrade, food count, collection upgrade, weapon upgrade, finish level, options + bank
+* level options (5)
+ocean 1
+* guppy, carn, ultra, ???, ??? 
+* simple chain 
+reefs 2
+* guppy, banana potion, banana muncher, baby clam, ???
+* eating drops, things on the bottom of the tank
+artic 3
+* guppy, super food, super guppy upgrade, ???, ???
+* making guppies huge 
+swamp 4
+* guppy, beetle muncher, frog, catfish, fire belly (wake dragon)
+* complex chain (g->bm->gc, fb hatches gc+bm, )
+cliffs 5
+* breeder, carn, guppy cruncher, ???, ???
+* eating lots of guppies 
+deep sea 6
+* jellyfish, super food, ???, ???
+* keeping limited fish alive 
+
+------- pets
+*=done, +=drawn, ?=unfinished
+
+[*]stinky/snail 1-1 - picks up coins 
+[*]zorf/seahorse 1-2 - feeds fish 
+[*]itchy/sword 1-3 - free damage, drops coins 
+[*]prego/duck 1-4 - free fish 
+[.]shrapnel l-5 - drops bombs, drops more and more as the game goes on, need to gample on clicking the bomb 
+
+[*]vert/skeleton 2-1 - drops free coins 
+[*]niko/clam 2-2 - drops free pearls 
+[*]rufus/crab 2-3 - high damage to low aliens, keeps fish away from bottom 
+[*]otto/otter 2-4 - coins last longer on the ground 
+[.]brinkley/elephant 2-5 - eats everything but also eats money/fish? eats every 2 seconds 
+
+[.]blip/dolphin 3-1 - which fish are hungry, how long before attack, where they come from, which aliens, unlocks things early 
+[*]walter/penguin 3-2 - freezes all coins 
+[?]sandy/sunfish 3-3 - slows down aliens
+[*]clyde/jelly 3-4 - picks up coins 
+[.]nose 3-5 - turns all fish into noses if they eat the drop, prevents aliens
+
+[*]seymour/turtle 4-1 - slow coin fall speed 
+[*]ray/ray 4-2 - bounces stuff off the ground 
+[-]wadsworth/whale 4-3 - protects smaller fish, drops coins 
+[-]alexi/axolotl 4-4 - eats all money on the screen 
+[?]stanley/monster 4-5 - ?????
+
+[*]meryl/mermaid 5-1 - sings for extra drops 
+?[.]herbert/hermit 5-2 - maybe cuts fish in half so you have two of each? 
+[*]gash/shark 5-3 - extra damage but eats fish 
+[.]amp/eel 5-4 - click to zap all guppies or aliens 
+[.]worm/cucumber 5-5 - eats dead fish, drops bonuses 
+
+?[?]???/blowfish 6-1 - blows up to deal damage in its area? 
+[.]angie/angel 6-2 - revives dead fish 
+[.]gumbo/angler 6-3 - guides fish away 
+[.]presto/tadpole 6-4 - changes roles randomly 
+[.]mantis_shrimp 6-5 - rewards collecting the same type of money, less money for random, changes colors
+
+----- pet ideas 
+* buy fish
+    * grow fish 
+* feed fish
+    * upgrade food 
+    * more food
+	* less hungry 
+* fight aliens
+    * upgrade weapons
+    * protect fish
+	* less often fights 
+* collect money
+    * better money
+    * fast collection
+    * more time to collect
+    * help collecting
+    * faster money drops
+
+------- pets stats 
+top pet = 500cpm 
+
+clam = 500cpm 
+skeleton = 500cpm 
+prego = 
+
+cpm = shells per min 
+fish in full game - 5s = 12x
+fish common drop rate - 6s = 10x
+fish uncommon drop rate - 8s = 6.5x
+fish rare drop rate - 12s = 5x 
+
+------- aliens
+- 1
+slyverster - basic
+??? - basic+abs
+- 2
+robot_tv - shoots missles  
+robot_phone - explodes on death
+- 3
+skeleton->slime - multiplies on hits 
+elemental - freezes fish that die on impact 
+- 4
+ninja_slug - jumps locations 
+cyclops->reptile - shoots laser balls 
+- 5
+squid->bear/wolf - heals->hibernates 
+ghost - goes invisible, visible after it eats 
+
+ 
+-- weapons 
+1 cyan (starting)
+2 green 
+3 yellow 
+4 orange
+5 red 
+6 blue
+7 purple 
+8 grey 
+9 white 
+10 black 
+
+
+
+
+
+
+
+
+

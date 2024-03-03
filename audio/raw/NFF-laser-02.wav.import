@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NFF-laser-02.wav-01dc73733b6df82108b3af2d0c0b85d3.sample"
+
+[deps]
+
+source_file="res://audio/raw/NFF-laser-02.wav"
+dest_files=[ "res://.import/NFF-laser-02.wav-01dc73733b6df82108b3af2d0c0b85d3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
