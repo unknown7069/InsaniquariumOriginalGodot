@@ -5,7 +5,7 @@ class_name Util
 static func get_sprite_region(s):
 	if s == null:
 		return Vector2(20, 20)  # should not be in game
-	if s is StreamTexture or s is AnimatedSprite:
+	if s is CompressedTexture2D or s is AnimatedSprite2D:
 		return s.get_size()
 	else:
 		return s.get_region().size

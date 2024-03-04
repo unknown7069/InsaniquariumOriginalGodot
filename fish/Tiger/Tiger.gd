@@ -8,7 +8,7 @@ func _ready():
 	self.update_state(0)
 
 func setup_states():
-	var carn_tiny_size = {'sprite': $AnimatedSprite, 'drop_value': 150, 'drop_rate': 2,
+	var carn_tiny_size = {'sprite': $AnimatedSprite2D, 'drop_value': 150, 'drop_rate': 2,
 	 'dead_image': 'res://dead_fish/images/carnivore_small_dead.png'}
 	self.states += [carn_tiny_size]
 

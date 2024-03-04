@@ -20,19 +20,17 @@ func load_init():
 	
 func save_game():
 	""" Write the game data to the save file """
-	var save_game = File.new()
-	save_game.open("user://savegame.save", File.WRITE)
-	save_game.store_line(to_json(STORY_LEVEL))
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	save_game.store_line(JSON.new().stringify(STORY_LEVEL))
 	save_game.close()
 
 func load_game():
 	""" Load the saved game if it exists """
 	self.load_init()
-	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
+	if not FileAccess.file_exists("user://savegame.save"):
 		self.save_game()
 	# read data 
-	save_game.open("user://savegame.save", File.READ)
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
 	# STORY_LEVEL = parse_json(save_game.get_line())
 	# var save_nodes = get_tree().get_nodes_in_group("Persist")
 	save_game.close()

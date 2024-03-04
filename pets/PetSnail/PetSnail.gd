@@ -1,4 +1,4 @@
-class_name Snail extends KinematicBody2D
+class_name Snail extends CharacterBody2D
 
 # CONSTANTS
 const CLASS_NAME = "Snail"
@@ -26,6 +26,10 @@ func _process(delta):
 	var target_loot = self.find_closest_loot()
 	if target_loot:
 		if target_loot.position.x > self.position.x:
-			self.move_and_slide(Vector2(self.speed, 0))
+			self.set_velocity(Vector2(self.speed, 0))
+			self.move_and_slide()
+			self.velocity
 		elif target_loot.position.x < self.position.x:
-			self.move_and_slide(Vector2(-self.speed, 0))
+			self.set_velocity(Vector2(-self.speed, 0))
+			self.move_and_slide()
+			self.velocity

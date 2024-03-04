@@ -25,16 +25,15 @@ static func _check_pet_level(all_pets, level_code):
 
 static func get_all_pets():
 	var pairs = {}
-	var dir = Directory.new()
-	if dir.open("res://pets/") == OK:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while (file_name != ""):
-			if file_name == "." or file_name == "..":
-				pass
-			elif dir.current_is_dir():
-				var pet_script = "res://pets/" + file_name + "/" + file_name + ".gd"
-				var pet_loaded = load(pet_script)
-				pairs[pet_loaded.CLASS_NAME] = [pet_script, "res://pets/" + file_name + "/" + file_name + ".tscn"]
-			file_name = dir.get_next()
+	var dir = DirAccess.open("res://pets/")
+	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
+	var file_name = dir.get_next()
+	while (file_name != ""):
+		if file_name == "." or file_name == "..":
+			pass
+		elif dir.current_is_dir():
+			var pet_script = "res://pets/" + file_name + "/" + file_name + ".gd"
+			var pet_loaded = load(pet_script)
+			pairs[pet_loaded.CLASS_NAME] = [pet_script, "res://pets/" + file_name + "/" + file_name + ".tscn"]
+		file_name = dir.get_next()
 	return pairs

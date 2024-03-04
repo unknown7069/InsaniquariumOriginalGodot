@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/348112__matrixxx__crunch.wav-776097932bfb1e3a8ec0f73dda9107df.sample"
+type="AudioStreamWAV"
+uid="uid://cs5fgad75wfde"
+path="res://.godot/imported/348112__matrixxx__crunch.wav-776097932bfb1e3a8ec0f73dda9107df.sample"
 
 [deps]
 
 source_file="res://audio/raw/348112__matrixxx__crunch.wav"
-dest_files=[ "res://.import/348112__matrixxx__crunch.wav-776097932bfb1e3a8ec0f73dda9107df.sample" ]
+dest_files=["res://.godot/imported/348112__matrixxx__crunch.wav-776097932bfb1e3a8ec0f73dda9107df.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

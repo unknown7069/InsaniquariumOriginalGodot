@@ -1,82 +1,100 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=16 format=3 uid="uid://dsqftoyxksac3"]
 
-[ext_resource path="res://fish/Tiger/Tiger.gd" type="Script" id=1]
-[ext_resource path="res://fish/AnimatedSprite.gd" type="Script" id=2]
-[ext_resource path="res://fish/Tiger/images/tiger_turn.png" type="Texture" id=3]
-[ext_resource path="res://fish/Tiger/images/tiger_swim.png" type="Texture" id=4]
-[ext_resource path="res://fish/Tiger/images/tiger_eating.png" type="Texture" id=5]
+[ext_resource type="Script" path="res://fish/Tiger/Tiger.gd" id="1"]
+[ext_resource type="Script" path="res://fish/AnimatedSprite.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cnixh1gex5ocd" path="res://fish/Tiger/images/tiger_turn.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://tlc1msrnqhyq" path="res://fish/Tiger/images/tiger_swim.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://hh0t33pbdwnd" path="res://fish/Tiger/images/tiger_eating.png" id="5"]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("5")
+region = Rect2(48, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 48, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("4")
+region = Rect2(48, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 96, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 144, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("3")
+region = Rect2(48, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 192, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("3")
+region = Rect2(96, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("3")
+region = Rect2(144, 0, 48, 44)
 
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 48, 0, 48, 44 )
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("3")
+region = Rect2(192, 0, 48, 44)
 
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "swim",
+[sub_resource type="SpriteFrames" id="10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}],
+"loop": false,
+"name": &"eat",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
-"name": "turn",
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}],
+"loop": false,
+"name": &"swim",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
-"loop": true,
-"name": "eat",
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}],
+"loop": false,
+"name": &"turn",
 "speed": 5.0
-} ]
+}]
 
-[node name="ultra" type="KinematicBody2D"]
-script = ExtResource( 1 )
+[node name="ultra" type="CharacterBody2D"]
+script = ExtResource("1")
 
 [node name="hunger_timer" type="Timer" parent="."]
 
 [node name="drop_timer" type="Timer" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 10 )
-animation = "eat"
-script = ExtResource( 2 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("10")
+animation = &"turn"
+script = ExtResource("2")

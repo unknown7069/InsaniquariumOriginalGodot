@@ -1,4 +1,4 @@
-class_name Clam extends KinematicBody2D
+class_name Clam extends CharacterBody2D
 
 # CONSTANTS
 const CLASS_NAME = "Clam"
@@ -10,11 +10,11 @@ var drop_rate = 45
 
 func _ready():
 	self.position.y = get_viewport().size.y - 10  # bottom of tank
-	$drop_timer.connect("timeout", self, "drop_item")
+	$drop_timer.connect("timeout", Callable(self, "drop_item"))
 	$drop_timer.start(self.drop_rate)
 
 func drop_item():
-	var coin = other_scene_loot.instance() 
+	var coin = other_scene_loot.instantiate() 
 	coin.position.x = self.position.x
 	coin.position.y = self.position.y - 30
 	coin.set_value(400)

@@ -8,7 +8,7 @@ var damage = 40
 
 func _ready():
 	self.speed = 80 
-	$punch.connect("timeout", self, "punch")
+	$punch.connect("timeout", Callable(self, "punch"))
 	$punch.start(1)
 	self.position.y = get_viewport().size.y - Globals.BOTTOM_BOARDER  # bottom of tank
 
@@ -43,5 +43,7 @@ func _process(delta):
 		return 
 	self.target_v = (target.position - self.position).normalized()
 	self.update_velocity(delta)
-	self.move_and_slide(self.current_v * speed)
+	self.set_velocity(self.current_v * speed)
+	self.move_and_slide()
+	self.velocity
 

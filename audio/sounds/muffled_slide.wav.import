@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/muffled_slide.wav-747f8a6721e01d6a1323890b67b84061.sample"
+type="AudioStreamWAV"
+uid="uid://bnmjx6uhhe382"
+path="res://.godot/imported/muffled_slide.wav-747f8a6721e01d6a1323890b67b84061.sample"
 
 [deps]
 
 source_file="res://audio/sounds/muffled_slide.wav"
-dest_files=[ "res://.import/muffled_slide.wav-747f8a6721e01d6a1323890b67b84061.sample" ]
+dest_files=["res://.godot/imported/muffled_slide.wav-747f8a6721e01d6a1323890b67b84061.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

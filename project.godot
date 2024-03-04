@@ -6,154 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Fish",
-"class": "Axolotl",
-"language": "GDScript",
-"path": "res://pets/PetAxolotl/PetAxolotl.gd"
-}, {
-"base": "Fish",
-"class": "BaseAlien",
-"language": "GDScript",
-"path": "res://alien/BaseAlien.gd"
-}, {
-"base": "Fish",
-"class": "Carn",
-"language": "GDScript",
-"path": "res://fish/carn/carn.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Clam",
-"language": "GDScript",
-"path": "res://pets/PetClam/PetClam.gd"
-}, {
-"base": "Fish",
-"class": "Crab",
-"language": "GDScript",
-"path": "res://pets/PetCrab/PetCrab.gd"
-}, {
-"base": "Fish",
-"class": "Duck",
-"language": "GDScript",
-"path": "res://pets/PetDuck/PetDuck.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Fish",
-"language": "GDScript",
-"path": "res://fish/fish.gd"
-}, {
-"base": "Fish",
-"class": "Guppy",
-"language": "GDScript",
-"path": "res://fish/guppy/Guppy.gd"
-}, {
-"base": "Fish",
-"class": "Jelly",
-"language": "GDScript",
-"path": "res://pets/PetJelly/PetJelly.gd"
-}, {
-"base": "Fish",
-"class": "Mermaid",
-"language": "GDScript",
-"path": "res://pets/PetMermaid/PetMermaid.gd"
-}, {
-"base": "Reference",
-"class": "Movement",
-"language": "GDScript",
-"path": "res://Movement.gd"
-}, {
-"base": "Fish",
-"class": "Otter",
-"language": "GDScript",
-"path": "res://pets/PetOtter/PetOtter.gd"
-}, {
-"base": "Fish",
-"class": "Penguin",
-"language": "GDScript",
-"path": "res://pets/PetPenguin/PetPenguin.gd"
-}, {
-"base": "Fish",
-"class": "Ray",
-"language": "GDScript",
-"path": "res://pets/PetRay/PetRay.gd"
-}, {
-"base": "Fish",
-"class": "Seahorse",
-"language": "GDScript",
-"path": "res://pets/PetSeahorse/PetSeahorse.gd"
-}, {
-"base": "Fish",
-"class": "Shark",
-"language": "GDScript",
-"path": "res://pets/PetShark/PetShark.gd"
-}, {
-"base": "Fish",
-"class": "Skull",
-"language": "GDScript",
-"path": "res://pets/PetSkull/PetSkull.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Snail",
-"language": "GDScript",
-"path": "res://pets/PetSnail/PetSnail.gd"
-}, {
-"base": "Fish",
-"class": "SwordFish",
-"language": "GDScript",
-"path": "res://pets/PetSwordfish/PetSwordfish.gd"
-}, {
-"base": "Fish",
-"class": "Tiger",
-"language": "GDScript",
-"path": "res://fish/Tiger/Tiger.gd"
-}, {
-"base": "Fish",
-"class": "Turtle",
-"language": "GDScript",
-"path": "res://pets/PetTurtle/PetTurtle.gd"
-}, {
-"base": "Reference",
-"class": "Util",
-"language": "GDScript",
-"path": "res://Util.gd"
-}, {
-"base": "Fish",
-"class": "Whale",
-"language": "GDScript",
-"path": "res://pets/PetWhale/PetWhale.gd"
-} ]
-_global_script_class_icons={
-"Axolotl": "",
-"BaseAlien": "",
-"Carn": "",
-"Clam": "",
-"Crab": "",
-"Duck": "",
-"Fish": "",
-"Guppy": "",
-"Jelly": "",
-"Mermaid": "",
-"Movement": "",
-"Otter": "",
-"Penguin": "",
-"Ray": "",
-"Seahorse": "",
-"Shark": "",
-"Skull": "",
-"Snail": "",
-"SwordFish": "",
-"Tiger": "",
-"Turtle": "",
-"Util": "",
-"Whale": ""
-}
+config_version=5
 
 [application]
 
 config/name="FishAquarium"
 run/main_scene="res://MenuMain.tscn"
+config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [autoload]
@@ -168,10 +27,9 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
 
 [gui]
 
@@ -186,5 +44,5 @@ theme/custom="res://new_theme.tres"
 
 [rendering]
 
+environment/defaults/default_environment="res://default_env.tres"
 quality/2d/use_pixel_snap=true
-environment/default_environment="res://default_env.tres"

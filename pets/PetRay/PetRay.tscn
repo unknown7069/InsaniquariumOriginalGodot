@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://pets/PetRay/images/ray.png" type="Texture" id=1]
+[ext_resource path="res://pets/PetRay/images/ray.png" type="Texture2D" id=1]
 [ext_resource path="res://pets/PetRay/PetRay.gd" type="Script" id=2]
 
 
@@ -18,8 +18,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="ray" type="KinematicBody2D"]
+[node name="ray" type="CharacterBody2D"]
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource( 2 )

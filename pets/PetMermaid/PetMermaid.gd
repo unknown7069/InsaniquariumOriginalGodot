@@ -8,7 +8,7 @@ var sing_delay = 65  # 35s in web
 
 func _ready():
 	self.update_state_sprite($sprite)
-	$sing.connect("timeout", self, "song")
+	$sing.connect("timeout", Callable(self, "song"))
 	$sing.start(sing_delay)
 
 func song():
@@ -17,7 +17,7 @@ func song():
 		t.set_one_shot(true)
 		add_child(t)
 		t.start(0.5)
-		yield(t, "timeout")
+		await t.timeout
 		self.sing()
 		t.queue_free()
 
