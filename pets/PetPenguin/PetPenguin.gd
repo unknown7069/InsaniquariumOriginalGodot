@@ -8,7 +8,7 @@ var sing_delay = 8
 
 func _ready():
 	self.update_state_sprite($sprite)
-	$sing.connect("timeout", self, "song")
+	$sing.connect("timeout", Callable(self, "song"))
 	$sing.start(sing_delay)
 
 func song():

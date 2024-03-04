@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 var value = 0
 var weight = 0.1
@@ -8,8 +8,8 @@ var target_v = Vector2(0, 1)
 var ice_sprite = load("res://loot/images/ice.png")
 
 func _ready():
-	$fade_timer.connect("timeout", self, "queue_free")
-	$freeze_timer.connect("timeout", self, "stop_freeze")
+	$fade_timer.connect("timeout", Callable(self, "queue_free"))
+	$freeze_timer.connect("timeout", Callable(self, "stop_freeze"))
 
 func set_value(value):
 	if value == 10:
@@ -35,7 +35,9 @@ func set_value(value):
 func _process(delta):
 	Movement.update_velocity(self)
 	if $freeze_timer.time_left <= 0:
-		self.move_and_slide(current_v * Globals.FALL_SPEED)
+		self.set_velocity(current_v * Globals.FALL_SPEED)
+		self.move_and_slide()
+		self.velocity
 	Movement.check_hit_ground(self, Globals.LOOT_FADE_LENGTH, $loot_penny)
 	# fade 
 	if not $fade_timer.is_stopped():
@@ -51,7 +53,7 @@ func pet_collect():
 
 func freeze():
 	# TODO apply frozen sprite
-	var spr = Sprite.new()
+	var spr = Sprite2D.new()
 	spr.texture = ice_sprite
 	spr.name = "ice"
 	# TODO resize the for the sprite 

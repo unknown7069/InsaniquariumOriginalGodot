@@ -24,4 +24,6 @@ func suck_up_fish():
 
 func point_to_me(other, move_speed = 150):
 	target_v = (self.position - other.position).normalized()
-	other.move_and_slide(target_v * move_speed)
+	other.set_velocity(target_v * move_speed)
+	other.move_and_slide()
+	other.velocity

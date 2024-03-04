@@ -1,8 +1,8 @@
 extends Node2D
 
 func _ready():
-	$Control/next.connect("button_down", self, "goto_level_select")
-	$Control/back.connect("button_down", self, "goto_main_menu")
+	$Control/next.connect("button_down", Callable(self, "goto_level_select"))
+	$Control/back.connect("button_down", Callable(self, "goto_main_menu"))
 	self.update_options()
 
 func update_options():
@@ -13,7 +13,7 @@ func update_options():
 			btn.disabled = true
 		elif SaveState.STORY_LEVEL[x] == SaveState.PASSED:
 			pass  # need a completed identity 
-		btn.connect("pressed", self, "set_level", [btn, x])
+		btn.connect("pressed", Callable(self, "set_level").bind(btn, x))
 		$Control/GridContainer.add_child(btn) 
 
 func set_level(btn, level):
@@ -25,11 +25,11 @@ func _on_toggled(btn):
 	# unselect all other buttons 
 	$Control/next.disabled = false
 	for child in $Control/GridContainer.get_children():
-		child.pressed = false
-	btn.pressed = true
+		child.button_pressed = false
+	btn.button_pressed = true
 
 func goto_level_select():
-	get_tree().change_scene("res://MenuPetSelection.tscn")
+	get_tree().change_scene_to_file("res://MenuPetSelection.tscn")
 
 func goto_main_menu():
-	get_tree().change_scene("res://MenuMain.tscn")
+	get_tree().change_scene_to_file("res://MenuMain.tscn")

@@ -29,12 +29,12 @@ func _ready():
 			btn.text = x.CLASS_NAME
 		else:
 			btn.text = "missing"
-		btn.connect("pressed", self, "on_toggle", [btn])
+		btn.connect("pressed", Callable(self, "on_toggle").bind(btn))
 		$c/GridContainer.add_child(btn)
-		btn.connect("mouse_entered", self, "display_tooltip", [btn])
-		btn.connect("mouse_exited", self, "hide_tooltip", [btn])
-	$c/next.connect("button_down", self, "goto_tank")
-	$c/back.connect("button_down", self, "goto_level_select")
+		btn.connect("mouse_entered", Callable(self, "display_tooltip").bind(btn))
+		btn.connect("mouse_exited", Callable(self, "hide_tooltip").bind(btn))
+	$c/next.connect("button_down", Callable(self, "goto_tank"))
+	$c/back.connect("button_down", Callable(self, "goto_level_select"))
 	self.pet_to_be_unlocked()
 
 func _process(delta):
@@ -50,11 +50,11 @@ func hide_tooltip(btn):
 
 func on_toggle(btn):
 	# limit selection to 3 
-	if len(Globals.PET_SELECTION) >= 3:
-		if btn.pressed == false :
+	if len(Globals.PET_SELECTION) >= Globals.MAX_PETS:
+		if btn.button_pressed == false :
 			pass
 		else:
-			btn.pressed = false 
+			btn.button_pressed = false 
 			return
 	# add 
 	if btn.text in Globals.PET_SELECTION:
@@ -63,13 +63,13 @@ func on_toggle(btn):
 		Globals.PET_SELECTION.append(btn.text)
 	# manage group 
 	for child in $c/GridContainer.get_children():
-		child.pressed = false
+		child.button_pressed = false
 	for child in $c/GridContainer.get_children():
 		if child.text in Globals.PET_SELECTION:
-			child.pressed = true 
+			child.button_pressed = true 
 
 func goto_level_select():
-	get_tree().change_scene("res://MenuLevelSelection.tscn")
+	get_tree().change_scene_to_file("res://MenuLevelSelection.tscn")
 
 func goto_tank():
-	get_tree().change_scene("res://Tank.tscn")
+	get_tree().change_scene_to_file("res://Tank.tscn")

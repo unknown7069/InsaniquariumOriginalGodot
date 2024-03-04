@@ -1,4 +1,4 @@
-class_name Fish extends KinematicBody2D
+class_name Fish extends CharacterBody2D
 
 # STATES
 var states = []
@@ -20,9 +20,9 @@ var drop_value
 var drop_rate 
 
 # ANIMATION
-onready var active_sprite
-onready var active_sprite_texture 
-var size_of_sprite = 0
+@onready var active_sprite
+@onready var active_sprite_texture 
+var size_of_sprite = 8
 var direction = 'left'
 
 var other_scene_dead = load("res://dead_fish/dead_fish.tscn")
@@ -30,7 +30,7 @@ var other_scene_crunch = load("res://dead_fish/crunch.tscn")
 var other_scene_loot = load("res://loot/loot.tscn")
 
 func _ready():
-	pass 
+	get_sprite_size()
 
 func update_hunger():
 	if $hunger_timer.get_time_left() < hunger_length + would_eat_length:
@@ -41,13 +41,13 @@ func update_hunger():
 		hungry = false 
 
 func crunch():
-	var new_crunch = other_scene_crunch.instance()
+	var new_crunch = other_scene_crunch.instantiate()
 	new_crunch.position = self.position
 	self.get_node('/root/main/').add_child(new_crunch)
 	self.queue_free()
 
 func died():
-	var corpse = other_scene_dead.instance()
+	var corpse = other_scene_dead.instantiate()
 	corpse.position = self.position
 	corpse.set_direction(self.direction)
 	corpse.set_details(self.states[self.current_state]['dead_image'], self.total_food)
@@ -73,14 +73,14 @@ func find_closest_food():
 		if dist < min_distance:
 			target = A 
 			min_distance = dist 
-	if min_distance < self.size_of_sprite:
-		self.eat(target)
-		return null
+		if min_distance < self.size_of_sprite:
+			self.eat(target)
+			return null
 	return target 
 
 func drop_item():
 	# create loot 
-	var coin = other_scene_loot.instance() 
+	var coin = other_scene_loot.instantiate() 
 	coin.position = self.position
 	coin.set_value(self.drop_value)
 	self.get_node('/root/main/loot_container').add_child(coin)
@@ -108,17 +108,20 @@ func update_state(new_size):
 func update_state_sprite(target_sprite):
 	# set all other images to false 
 	for x in self.get_children():
-		if x is AnimatedSprite:
+		if x is AnimatedSprite2D:
 			x.visible = false 
 	self.active_sprite = target_sprite
 	if self.direction == 'right':
 		self.active_sprite.flip_h = true 
 	self.active_sprite.visible = true 
-	self.active_sprite_texture = self.active_sprite.get_sprite_frames().get_frame('swim', 0)
+	self.get_sprite_size()
+	
+func get_sprite_size():
+	self.active_sprite_texture = self.active_sprite.sprite_frames.get_frame_texture(self.active_sprite.get_animation(), self.active_sprite.frame)
 	if self.active_sprite_texture == null:
 		self.size_of_sprite = 32  # grrr
 		return
-	elif self.active_sprite_texture is StreamTexture:
+	elif self.active_sprite_texture is CompressedTexture2D:
 		self.size_of_sprite = 32
 		return 
 	var current_frame = self.active_sprite_texture.get_region()
@@ -128,8 +131,8 @@ var wander_counter = 0
 var wander_speed = speed
 func wander(delta):
 	if wander_counter < 0:
-		self.target_v = Vector2(rand_range(-1, 1), rand_range(-1, 1))
-		self.wander_speed = rand_range(speed*0.05, speed*0.6)
+		self.target_v = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+		self.wander_speed = randf_range(speed*0.05, speed*0.6)
 		wander_counter = 5
 	else:
 		wander_counter -= delta 
@@ -148,7 +151,8 @@ func move_self(move_speed, delta, target=null):
 		self.current_v.x = max(self.current_v.x, 0)
 	if Util.check_right_side_of_tank(self, self.active_sprite_texture):
 		self.current_v.x = min(self.current_v.x, 0)
-	self.move_and_slide(self.current_v * move_speed)
+	self.set_velocity(self.current_v * move_speed)
+	self.move_and_slide()
 
 func update_velocity(delta):
 	if abs(self.current_v.x - self.target_v.x) <= self.weight:

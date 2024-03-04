@@ -12,7 +12,7 @@ var pet_name = "Zorf"
 func _ready():
 	self.speed = 30
 	self.update_state_sprite($sprite)
-	$food_counter.connect("timeout", self, "check_hungry")
+	$food_counter.connect("timeout", Callable(self, "check_hungry"))
 	$food_counter.start(1.5)
 
 func check_hungry():
@@ -24,7 +24,7 @@ func check_hungry():
 			return
 
 func create_food():
-	var new_food = food_scene.instance() 
+	var new_food = food_scene.instantiate() 
 	new_food.set_level(3)
 	new_food.position = self.position
 	new_food.player_created = false 

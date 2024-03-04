@@ -11,9 +11,9 @@ func _ready():
 	self.drop_value = 30  
 	self.drop_rate = 6
 	# need an eating timer 
-	$punch.connect("timeout", self, "punch")
+	$punch.connect("timeout", Callable(self, "punch"))
 	$punch.start(1)
-	$drop.connect("timeout", self, "drop")
+	$drop.connect("timeout", Callable(self, "drop"))
 	$drop.start(self.drop_rate)
 
 func find_closest_food():
@@ -40,4 +40,6 @@ func _process(delta):
 		return 
 	self.target_v = (target.position - self.position).normalized()
 	self.update_velocity(delta)
-	self.move_and_slide(self.current_v * speed)
+	self.set_velocity(self.current_v * speed)
+	self.move_and_slide()
+	self.velocity

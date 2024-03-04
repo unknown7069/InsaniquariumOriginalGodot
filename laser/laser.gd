@@ -1,11 +1,11 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
 var distance = 40  # hmmm 
 
 func _ready():
 	GlobalAudio.get_node("zap").play(0)
 	self.hit_aliens()
-	self.connect("animation_finished", self, "finished_animation")
+	self.connect("animation_finished", Callable(self, "finished_animation"))
 	self.play()
 
 func hit_aliens():

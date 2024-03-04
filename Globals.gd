@@ -34,3 +34,4 @@ var TOP_BOARDER = 70
 # MENU
 var LEVEL_SELECTION = "1-1"  # for testing
 var PET_SELECTION = []
+var MAX_PETS = 20  # 3 

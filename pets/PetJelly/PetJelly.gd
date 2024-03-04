@@ -28,4 +28,6 @@ func _process(delta):
 	if target == null:
 		return 
 	self.direction_v = (target.position - self.position).normalized()
-	self.move_and_slide(self.direction_v * speed)
+	self.set_velocity(self.direction_v * speed)
+	self.move_and_slide()
+	self.velocity

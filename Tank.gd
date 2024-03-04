@@ -17,24 +17,24 @@ func _ready():
 	set_process_input(true)
 	self.testing()
 	self.init_pets()
-	$battle_timer.connect("timeout", self, "start_battle")
+	$battle_timer.connect("timeout", Callable(self, "start_battle"))
 	$battle_timer.start(Globals.BATTLE_TIMER)  
-	$click_timer.connect("timeout", self, "create_food")
+	$click_timer.connect("timeout", Callable(self, "create_food"))
 
 # CLICK
 func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if not self.in_battle:
 			self.create_food()
 			$click_timer.start(0.2)  # 
 		else:
-			var new_fire = laser_scene.instance()
+			var new_fire = laser_scene.instantiate()
 			new_fire.position = event.position
 			$misc_container.add_child(new_fire)
-	elif event is InputEventMouseButton and not event.pressed and event.button_index == BUTTON_LEFT:
+	elif event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		$click_timer.stop() 
 	Globals.CLICK_COUNTER = 0
-	get_tree().set_input_as_handled()  # remove future clicks?
+	get_viewport().set_input_as_handled()  # remove future clicks?
 
 # FOOD 
 func create_food():
@@ -43,7 +43,7 @@ func create_food():
 	if self.count_player_created_food() >= Globals.FOOD_COUNT:
 		return  # limit drops 
 	GlobalAudio.get_node("drop_food").play(0)
-	var new_food = food_scene.instance() 
+	var new_food = food_scene.instantiate() 
 	new_food.position = get_global_mouse_position() 
 	new_food.set_level()  
 	$food_container.add_child(new_food)
@@ -74,7 +74,7 @@ func end_battle():
 		f.get_node('hunger_timer').set_paused(false)
 
 func spawn_alien():
-	var new_alien = self.alien_scene.instance()
+	var new_alien = self.alien_scene.instantiate()
 	new_alien.position = get_random_location()
 	$alien_container.add_child(new_alien)
 
@@ -124,21 +124,21 @@ func _human_money(monies):
 func create_guppy(free=false):
 	var price = price_list['guppy'] if not free else 0
 	if self.can_afford(price):
-		var new_gup = self.guppy_scene.instance()
+		var new_gup = self.guppy_scene.instantiate()
 		new_gup.position = get_random_location()
 		$fish_container.add_child(new_gup)
 
 func create_carn(free=false):
 	var price = price_list['carn'] if not free else 0
 	if self.can_afford(price):
-		var new_carn = self.carn_scene.instance()
+		var new_carn = self.carn_scene.instantiate()
 		new_carn.position = get_random_location()
 		$fish_container.add_child(new_carn)
 
 func create_ultra(free=false):
 	var price = price_list['ultra'] if not free else 0
 	if self.can_afford(price):
-		var new_carn = self.tiger_scene.instance()
+		var new_carn = self.tiger_scene.instantiate()
 		new_carn.position = get_random_location()
 		$fish_container.add_child(new_carn)
 
@@ -201,17 +201,17 @@ func create_next_button(price, icon, func_s):
 	var btn = Button.new()
 	btn.set_position(Vector2(x_offset,0))
 	btn.set_size(Vector2(offset_increment, y_offset))
-	btn.connect("button_down", self, func_s)
+	btn.connect("button_down", Callable(self, func_s))
 	# set label
 	var lbl = Label.new()
 	lbl.text = str(price_list[price])
-	lbl.align = Label.ALIGN_CENTER 
+	# lbl.align = Label.ALIGNMENT_CENTER 
 	lbl.set_position(Vector2(0, y_offset-16))
 	lbl.set_size(Vector2(offset_increment, 10))
 	btn.add_child(lbl)
 	price_to_label[price] = lbl
 	# set icon 
-	var btn_icon = Sprite.new()
+	var btn_icon = Sprite2D.new()
 	btn_icon.texture = load(icon)
 	btn_icon.position = Vector2(offset_increment/2, y_offset/2-6)
 	btn.add_child(btn_icon)
@@ -221,7 +221,7 @@ func create_next_button(price, icon, func_s):
 func init_pets():
 	var pet_manager = preload("res://AllPets.gd").get_all_pets()
 	for p in Globals.PET_SELECTION:
-		var new_pet = load(pet_manager[p][1]).instance()
+		var new_pet = load(pet_manager[p][1]).instantiate()
 		new_pet.position = get_random_location()
 		$pet_container.add_child(new_pet)
 

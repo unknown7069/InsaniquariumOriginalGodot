@@ -18,9 +18,9 @@ func setup_states():
 func _ready():
 	self.setup_states()
 	self.eat_sound = "slurp"
-	$hunger_timer.connect("timeout", self, "died")
+	$hunger_timer.connect("timeout", Callable(self, "died"))
 	$hunger_timer.start(self.would_eat_length + self.hunger_length + 2)
-	$drop_timer.connect("timeout", self, "drop_item")
+	$drop_timer.connect("timeout", Callable(self, "drop_item"))
 	self.update_state(0)
 
 func _process(delta):

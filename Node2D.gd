@@ -1,13 +1,13 @@
 extends Node2D
 
 # don't forget to use stretch mode 'viewport' and aspect 'ignore'
-onready var viewport = get_viewport()
+@onready var viewport = get_viewport()
 
 func _ready():
-	pass # get_tree().connect("screen_resized", self, "_screen_resized")
+	pass # get_tree().connect("screen_resized", Callable(self, "_screen_resized"))
 
 func _screen_resized():
-	var window_size = OS.get_window_size()
+	var window_size = get_window().get_size()
 
 	# see how big the window is compared to the viewport size
 	# floor it so we only get round numbers (0, 1, 2, 3 ...)
